@@ -1,0 +1,33 @@
+<div class="recipe-container">
+    <h1>Recipe Finder</h1>
+    
+    <!-- Input field for ingredients -->
+    <input
+      type="text"
+      placeholder="Enter ingredients (comma-separated)"
+      #ingredientInput
+    />
+    
+    <!-- Buttons to fetch recipes and substitutions -->
+    <button (click)="getRecipes(ingredientInput.value)">Get Recipes</button>
+    <button (click)="getSubstitutions(ingredientInput.value)">Get Substitutions</button>
+  
+    <!-- Display recommended recipes -->
+    <div *ngIf="recipes.length > 0">
+      <h2>Recommended Recipes:</h2>
+      <ul>
+        <li *ngFor="let recipe of recipes">{{ recipe }}</li>
+      </ul>
+    </div>
+  
+    <!-- Display ingredient substitutions -->
+    <div *ngIf="substitutionKeys.length > 0">
+      <h2>Ingredient Substitutions:</h2>
+      <ul>
+        <li *ngFor="let key of substitutionKeys">
+          <strong>{{ key }}:</strong> {{ substitutions[key] }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  
